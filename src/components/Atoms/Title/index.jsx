@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import React from "react";
+import styled from "../../../..//node_modules/styled-components";
+import React from "../../../../node_modules/react";
 import COLOR from "../../../variables/color";
 import FONTFAMILY from "../../../variables/font_family";
 import BREAKPOINT from "../../../variables/breakpoint";
