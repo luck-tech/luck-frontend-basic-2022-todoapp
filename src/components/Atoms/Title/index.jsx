@@ -13,7 +13,8 @@ export default Title;
 const StyledText = styled.div`
   color: ${COLOR.WHITE};
   font-family: ${FONTFAMILY.ROBOTO};
-  ${TEXT.M} @media screen and (min-width: ${BREAKPOINT.MEDIUM}) {
+  ${TEXT.M};
+  @media screen and (min-width: ${BREAKPOINT.MEDIUM}) {
     ${TEXT.L};
   }
 `;
