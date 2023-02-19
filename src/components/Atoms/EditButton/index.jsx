@@ -6,7 +6,7 @@ import COLOR from "../../../variables/color";
 const EditButton = ({ onClick }) => {
   return (
     <StyledButton onClick={onClick}>
-      <ButtonCircle></ButtonCircle>
+      <ButtonCircle />
       <img src={pencil} />
     </StyledButton>
   );
