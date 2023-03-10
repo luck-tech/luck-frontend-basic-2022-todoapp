@@ -19,17 +19,14 @@ const Input = ({ onEditComplete, defaultValue }) => {
     });
   }, []);
 
-  return <StyledInput ref={inputRef}></StyledInput>;
+  return <StyledInput ref={inputRef} />;
 };
 
 export default Input;
 
 const StyledInput = styled.input`
-  background-color: transparent;
+  background-color: ${COLOR.BLACK};
   color: ${COLOR.LIGHT_GRAY};
-  ${StyledInput}:focus {
-    background-color: ${COLOR.BLACK};
-  }
   ${TEXT.S}
   border: none;
   outline: none;
