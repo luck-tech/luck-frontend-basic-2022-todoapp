@@ -19,7 +19,7 @@ const Task = ({ onTaskChange, onTaskComplete, taskName, defaultIsEditing }) => {
         <StyledCheckBoxWrapper>
           <CheckBox onClick={onTaskComplete}></CheckBox>
         </StyledCheckBoxWrapper>
-        <Input onEditComplete={taskName}></Input>
+        <Input onEditComplete={onEditComplete} defaultValue={taskName}></Input>
       </StyledWrraper>
     );
   } else {
