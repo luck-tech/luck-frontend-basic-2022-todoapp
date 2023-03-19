@@ -3,44 +3,58 @@ import styled from "styled-components";
 import CheckBox from "../../Atoms/Checkbox/index.jsx";
 import Input from "../../Atoms/Input/index.jsx";
 import EditButton from "../../Atoms/EditButton/index";
+import COLOR from "../../../variables/color";
 
 const Task = ({ onTaskChange, onTaskComplete, taskName, defaultIsEditing }) => {
-  const [isEditing, setisEditing] = useState(defaultIsEditing);
+  const [isEditing, setIsEditing] = useState(defaultIsEditing);
   const onEditComplete = (value) => {
-    setisEditing(false);
+    setIsEditing(false);
     onTaskChange(value);
   };
   const onEditButtonClick = () => {
-    setisEditing(true);
+    setIsEditing(true);
   };
   if (isEditing === "true") {
     return (
       <StyledWrraper>
         <StyledCheckBoxWrapper>
-          <CheckBox onClick={onTaskComplete}></CheckBox>
+          <CheckBox onClick={() => onTaskComplete}></CheckBox>
         </StyledCheckBoxWrapper>
         <Input onEditComplete={onEditComplete} defaultValue={taskName}></Input>
       </StyledWrraper>
     );
   } else {
-    <StyledWrraper>
-      <StyledCheckBoxWrapper>
-        <CheckBox onClick={onTaskComplete}></CheckBox>
-      </StyledCheckBoxWrapper>
-      <StyledNameAndButtonWrapper>
-        <StyledTaskName>{taskName}</StyledTaskName>
-        <StyledEditButtonWrapper>
-          <EditButton onClick={onEditButtonClick()}></EditButton>
-        </StyledEditButtonWrapper>
-      </StyledNameAndButtonWrapper>
-    </StyledWrraper>;
+    return (
+      <StyledWrraper>
+        <StyledCheckBoxWrapper>
+          <CheckBox onClick={() => onTaskComplete}></CheckBox>
+        </StyledCheckBoxWrapper>
+        <StyledNameAndButtonWrapper>
+          <StyledTaskName>{taskName}</StyledTaskName>
+          <StyledEditButtonWrapper>
+            <EditButton onClick={() => onEditButtonClick()}></EditButton>
+          </StyledEditButtonWrapper>
+        </StyledNameAndButtonWrapper>
+      </StyledWrraper>
+    );
   }
 };
 
 export default Task;
 
 const StyledWrraper = styled.div``;
-const StyledCheckBoxWrapper = styled.div``;
-const StyledNameAndButtonWrapper = styled.div``;
-const StyledTaskName = styled.div``;
-const StyledEditButtonWrapper = styled.div``;
+const StyledCheckBoxWrapper = styled.div`
+  position: absolute;
+`;
+const StyledNameAndButtonWrapper = styled.div`
+  display: flex;
+`;
+const StyledTaskName = styled.div`
+  color: ${COLOR.LIGHT_GRAY};
+  position: relative;
+  left: 30px;
+  line-height: 20px;
+`;
+const StyledEditButtonWrapper = styled.div`
+  margin-left: auto;
+`;
