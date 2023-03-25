@@ -37,7 +37,6 @@ const TodoCard = () => {
       );
     }
   };
-  console.log(taskList);
   return (
     <StyledWrapper>
       <AddTaskButton onClick={onAddTaskButtonClick} />
@@ -64,13 +63,12 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
-  gap: 10px;
   background-color: ${COLOR.LIGHT_BLACK};
   width: 500px;
+  border-radius: 4px;
 `;
 const StyledTaskList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 2px 6px;
+  padding: 0px 6px;
 `;

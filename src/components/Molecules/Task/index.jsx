@@ -15,7 +15,7 @@ const Task = ({ onTaskChange, onTaskComplete, taskName, defaultIsEditing }) => {
     setIsEditing(true);
   };
   return (
-    <div>
+    <StyledTask>
       <div>
         <CheckBox onClick={onTaskComplete}></CheckBox>
       </div>
@@ -34,12 +34,15 @@ const Task = ({ onTaskChange, onTaskComplete, taskName, defaultIsEditing }) => {
           </StyledEditButton>
         </StyledNameAndButtonWrapper>
       )}
-    </div>
+    </StyledTask>
   );
 };
 
 export default Task;
 
+const StyledTask = styled.div`
+  padding-top: 10px;
+`;
 const StyledNameAndButtonWrapper = styled.div`
   display: flex;
   padding-left: 30px;
