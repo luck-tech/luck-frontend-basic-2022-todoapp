@@ -26,7 +26,7 @@ const TodoCard = () => {
     if (!value) {
       onTaskComplete(index);
     } else {
-      settaskList((currentList) => currentList.splice(0, 1, value));
+      settaskList((currentList) => currentList.splice(index, 1, value));
     }
   };
   return (
