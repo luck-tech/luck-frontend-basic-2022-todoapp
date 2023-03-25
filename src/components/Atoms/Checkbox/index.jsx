@@ -22,6 +22,7 @@ const StyledCB = styled.button`
   border-radius: 2px;
   &:hover img {
     display: block;
+    cursor: pointer;
   }
   & > img {
     width: 15px;
