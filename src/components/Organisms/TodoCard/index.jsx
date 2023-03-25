@@ -2,56 +2,78 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import AddTaskButton from "../../Atoms/AddTaskButton/index.jsx";
 import Task from "../../Molecules/Task/index.jsx";
+import COLOR from "../../../variables/color.js";
 
 const TodoCard = () => {
   const [taskList, settaskList] = useState();
+
   const onAddTaskButtonClick = () => {
     settaskList((currentList) => {
-      [...currentList, { name: "", initializing: true }];
+      if (currentList !== undefined) {
+        return [...currentList, { name: "", initializing: true }];
+      } else {
+        return [{ name: "", initializing: true }];
+      }
     });
   };
   const onTaskComplete = (index) => {
     settaskList((currentList) => {
-      const nextList = currentList.filter((currentValue, index) => {
-        currentValue !== index;
-      });
+      const nextList = currentList.filter((_, idx) => index !== idx);
       return nextList;
     });
   };
   const onTaskNameChange = (value, index) => {
-    if ((value = "")) {
+    if (!value) {
       onTaskComplete(index);
     } else {
-      setTaskList((currentList) =>
-        currentList.map((nowvalue) => {
-          return { ...nowvalue, name: value };
+      settaskList((currentList) =>
+        currentList.map((vle, idx) => {
+          if (index === idx) {
+            return { ...vle, name: value };
+          } else {
+            return { ...vle };
+          }
         })
       );
     }
   };
-
+  console.log(taskList);
   return (
     <StyledWrapper>
-      <AddTaskButton onClick={onAddTaskButtonClick}>
-        <StyledTaskList>
-          {taskList.map((task, index) => (
+      <AddTaskButton onClick={onAddTaskButtonClick} />
+      <StyledTaskList>
+        {taskList !== undefined &&
+          taskList.map((task, index) => (
             <Task
               key={index}
               onTaskComplete={() => onTaskComplete(index)}
-              onTaskNameChange={(value) => {
-                onTaskNameChange(value, index);
-              }}
+              onTaskChange={(value) => onTaskNameChange(value, index)}
               taskName={task.name}
               defaultIsEditing={task.initializing}
             />
           ))}
-        </StyledTaskList>
-      </AddTaskButton>
+      </StyledTaskList>
     </StyledWrapper>
   );
 };
 
 export default TodoCard;
 
-const StyledWrapper = styled.div``;
-const StyledTaskList = styled.div``;
+const StyledWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 10px;
+  width: 500px;
+  background-color: ${COLOR.LIGHT_BLACK};
+  & > AddTaskButton {
+    width: 500px;
+  }
+`;
+const StyledTaskList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2px 6px;
+`;
