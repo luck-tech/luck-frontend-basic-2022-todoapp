@@ -26,15 +26,7 @@ const TodoCard = () => {
     if (!value) {
       onTaskComplete(index);
     } else {
-      settaskList((currentList) =>
-        currentList.map((vle, idx) => {
-          if (index === idx) {
-            return { ...vle, name: value };
-          } else {
-            return { ...vle };
-          }
-        })
-      );
+      settaskList((currentList) => currentList.splice(0, 1, value));
     }
   };
   return (
