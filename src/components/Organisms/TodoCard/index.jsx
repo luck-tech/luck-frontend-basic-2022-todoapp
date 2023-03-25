@@ -65,11 +65,8 @@ const StyledWrapper = styled.div`
   align-items: flex-start;
   padding: 20px;
   gap: 10px;
-  width: 500px;
   background-color: ${COLOR.LIGHT_BLACK};
-  & > AddTaskButton {
-    width: 500px;
-  }
+  width: 500px;
 `;
 const StyledTaskList = styled.div`
   display: flex;

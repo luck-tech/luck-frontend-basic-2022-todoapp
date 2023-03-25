@@ -29,9 +29,9 @@ const Task = ({ onTaskChange, onTaskComplete, taskName, defaultIsEditing }) => {
       ) : (
         <StyledNameAndButtonWrapper>
           <StyledTaskName>{taskName}</StyledTaskName>
-          <div>
+          <StyledEditButton>
             <EditButton onClick={() => onEditButtonClick()}></EditButton>
-          </div>
+          </StyledEditButton>
         </StyledNameAndButtonWrapper>
       )}
     </div>
@@ -42,16 +42,19 @@ export default Task;
 
 const StyledNameAndButtonWrapper = styled.div`
   display: flex;
-  gap: 140px;
   padding-left: 30px;
+  height: 20px;
+  width: 450px;
 `;
 const StyledTaskName = styled.div`
   color: ${COLOR.LIGHT_GRAY};
   line-height: 20px;
 `;
+const StyledEditButton = styled.div`
+  margin-left: auto;
+`;
 const StyledInputWrapper = styled.div`
   line-height: 20px;
   display: flex;
-  gap: 140px;
   padding-left: 30px;
 `;

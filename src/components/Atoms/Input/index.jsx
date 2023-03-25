@@ -32,4 +32,5 @@ const StyledInput = styled.input`
   outline: none;
   padding: 0px 4px;
   border-radius: 2px;
+  width: 418px;
 `;
