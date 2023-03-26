@@ -56,6 +56,9 @@ const StyledNameAndButtonWrapper = styled.div`
 const StyledTaskName = styled.div`
   color: ${COLOR.LIGHT_GRAY};
   line-height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 const StyledEditButton = styled.div`
   margin-left: auto;
