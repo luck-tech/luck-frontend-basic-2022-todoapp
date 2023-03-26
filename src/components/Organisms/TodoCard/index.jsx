@@ -5,16 +5,14 @@ import Task from "../../Molecules/Task/index.jsx";
 import COLOR from "../../../variables/color.js";
 
 const TodoCard = () => {
-  const [taskList, settaskList] = useState();
+  const [taskList, settaskList] = useState([]);
 
   const onAddTaskButtonClick = () => {
-    settaskList((currentList) => {
-      if (currentList !== undefined) {
-        return [...currentList, { name: "", initializing: true }];
-      } else {
-        return [{ name: "", initializing: true }];
-      }
-    });
+    const addTask = {
+      name: "",
+      initializing: true,
+    };
+    settaskList((taskList) => [...taskList, addTask]);
   };
   const onTaskComplete = (index) => {
     settaskList((currentList) => {
@@ -26,9 +24,13 @@ const TodoCard = () => {
     if (!value) {
       onTaskComplete(index);
     } else {
-      settaskList((currentList) => currentList.splice(index, 1, value));
+      const newTaskList = [...taskList];
+      newTaskList[index].name = value;
+      newTaskList[index].initializing = false;
+      settaskList(newTaskList);
     }
   };
+
   return (
     <StyledWrapper>
       <AddTaskButton onClick={onAddTaskButtonClick} />
