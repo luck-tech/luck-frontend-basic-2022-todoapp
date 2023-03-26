@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import AddTaskButton from "../../Atoms/AddTaskButton/index.jsx";
 import Task from "../../Molecules/Task/index.jsx";
@@ -7,6 +7,19 @@ import BREAKPOINT from "../../../variables/breakpoint.js";
 
 const TodoCard = () => {
   const [taskList, settaskList] = useState([]);
+
+  useEffect(() => {
+    if (!localStorage.getItem("taskData")) {
+      settaskList([]);
+    } else {
+      const data = JSON.parse(localStorage.getItem("taskData"));
+      settaskList([...data]);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("taskData", JSON.stringify(taskList));
+  }, [taskList]);
 
   const onAddTaskButtonClick = () => {
     const addTask = {
