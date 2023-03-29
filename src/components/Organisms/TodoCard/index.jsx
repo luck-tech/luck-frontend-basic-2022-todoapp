@@ -4,8 +4,10 @@ import AddTaskButton from "../../Atoms/AddTaskButton/index.jsx";
 import Task from "../../Molecules/Task/index.jsx";
 import COLOR from "../../../variables/color.js";
 import BREAKPOINT from "../../../variables/breakpoint.js";
+import { useAlertHandlerContext } from "../../../contexts/alert_handler";
 
 const TodoCard = () => {
+  const AlertHandlerContext = useAlertHandlerContext();
   const [taskList, settaskList] = useState([]);
 
   useEffect(() => {
@@ -59,6 +61,11 @@ const TodoCard = () => {
               defaultIsEditing={task.initializing}
             />
           ))}
+        {
+          (taskList.name =
+            "" &&
+            AlertHandlerContext.setAlert("タスクの名前が設定されていません。"))
+        }
       </StyledTaskList>
     </StyledWrapper>
   );
