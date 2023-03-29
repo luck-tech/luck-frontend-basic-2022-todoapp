@@ -13,6 +13,7 @@ export default Alert;
 const StyledAlert = styled.div`
   margin: 0 auto;
   width: 400px;
+  top: 80px;
   height: 40px;
   border-radius: 4px;
   background-color: ${COLOR.RED};
@@ -22,7 +23,8 @@ const StyledAlert = styled.div`
   color: ${COLOR.WHITE};
   padding: 10px 20px;
   ${TEXT.S};
-  @media screen and (min-width: ${BREAKPOINT.MEDIUM}) {
+  @media screen and (max-width: ${BREAKPOINT.MEDIUM}) {
     max-width: 280px;
+    top: 40px;
   }
 `;
