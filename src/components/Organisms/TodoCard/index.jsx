@@ -38,6 +38,7 @@ const TodoCard = () => {
   };
   const onTaskNameChange = (value, index) => {
     if (!value) {
+      AlertHandlerContext.setAlert("タスクの名前が設定されていません。");
       onTaskComplete(index);
     } else {
       const newTaskList = [...taskList];
@@ -61,11 +62,6 @@ const TodoCard = () => {
               defaultIsEditing={task.initializing}
             />
           ))}
-        {
-          (taskList.name =
-            "" &&
-            AlertHandlerContext.setAlert("タスクの名前が設定されていません。"))
-        }
       </StyledTaskList>
     </StyledWrapper>
   );
