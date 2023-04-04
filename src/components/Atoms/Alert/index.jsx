@@ -21,8 +21,8 @@ const StyledAlert = styled.div`
   border-radius: 4px;
   background-color: ${COLOR.RED};
   transition: all 0.5s ease 0s;
-  opacity: ${(visible) => (visible ? "0" : "1")};
-  transform: ${(visible) => (visible ? "none" : "translateY(-20px)")}
+  opacity: ${({ visible }) => (visible ? "1" : "0")};
+  transform: ${({ visible }) => (visible ? "none" : "translateY(-20px)")};
   color: ${COLOR.WHITE};
   padding: 10px 20px;
   @media screen and (max-width: ${BREAKPOINT.MEDIUM}) {

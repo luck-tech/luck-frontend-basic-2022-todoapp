@@ -10,6 +10,9 @@ const Input = ({ onEditComplete, defaultValue }) => {
   useEffect(() => {
     inputRef.current.value = defaultValue;
     inputRef.current.focus();
+    if (!inputRef.current) {
+      return;
+    }
     inputRef.current.addEventListener("focusout", () =>
       onEditComplete(inputRef.current.value)
     );
