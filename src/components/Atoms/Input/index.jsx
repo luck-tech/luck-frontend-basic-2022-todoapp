@@ -10,10 +10,16 @@ const Input = ({ onEditComplete, defaultValue }) => {
   useEffect(() => {
     inputRef.current.value = defaultValue;
     inputRef.current.focus();
-    inputRef.current.addEventListener("focusout", () =>
-      onEditComplete(inputRef.current.value)
-    );
+    inputRef.current.addEventListener("focusout", () => {
+      if (!inputRef.current) {
+        return;
+      }
+      onEditComplete(inputRef.current.value);
+    });
     inputRef.current.addEventListener("keydown", (e) => {
+      if (!inputRef.current) {
+        return;
+      }
       if (e.key === "Enter") {
         onEditComplete(inputRef.current.value);
       }
